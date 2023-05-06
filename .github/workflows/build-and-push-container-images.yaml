@@ -13,15 +13,20 @@ jobs:
     name: "Detect Directory Changes"
     runs-on: ubuntu-latest
     outputs:
-      changed: ${{ steps.detect.outputs.changed }}
+      changed: ${{ steps.get_changed.outputs.changed }}
     steps:
       # Get the repository's code
       - name: Checkout
         uses: actions/checkout@v3
       # Detect which directories have changed
-      - name: Detect Directory Changes
-        id: detect
-        uses: tchupp/actions-detect-directory-changes@v0.1.8
+      - name: get-changed-folders
+        uses: Stockopedia/action-get-changed-files@v1.2
+        id: get_changed
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          ignore: "**/+(.github)"
+          foldersOnly: true
+          format: json
   build:
     name: "Build changed container images"
     runs-on: ubuntu-latest
