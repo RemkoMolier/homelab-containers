@@ -2,7 +2,7 @@ FROM alpine:3.17
 LABEL maintainer="remko.molier@googlemail.com"
 
 # Build arguments
-ARG APPLICATION_VERSION
+ARG APPLICATION_VERSION="9.18.13"
 ARG ALPINE_SUFFIX="r0"
 ARG BUILD_DATE
 ARG VCS_REF
