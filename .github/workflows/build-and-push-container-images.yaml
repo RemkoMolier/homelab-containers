@@ -66,7 +66,7 @@ jobs:
       # Login to GHCR only when main is changed
       - name: Login to GHCR
         if: github.event_name != 'pull_request'
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
