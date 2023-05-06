@@ -31,6 +31,8 @@ jobs:
         run: echo ${{ steps.get_changed.outputs.changed }}
   build:
     name: "Build changed container images"
+    needs: detect-directory-changes
+    if: ${{ needs.detect-directory-changes.outputs.changed != '[]' }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
