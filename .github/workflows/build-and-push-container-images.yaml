@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        container: ${{ fromJSON(needs.detect-directoy-changes.outputs.changed) }}
+        container: ${{ fromJSON(needs.detect-directory-changes.outputs.changed) }}
     steps:
       # Get the repository's code
       - name: Checkout
