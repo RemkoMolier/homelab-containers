@@ -34,6 +34,9 @@ jobs:
     needs: detect-directory-changes
     if: ${{ needs.detect-directory-changes.outputs.changed != '[]' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     strategy:
       matrix:
         container: ${{ fromJSON(needs.detect-directory-changes.outputs.changed) }}
