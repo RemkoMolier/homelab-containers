@@ -17,7 +17,7 @@ jobs:
     steps:
       # Get the repository's code
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       # Detect which directories have changed
       - name: Detect Directory Changes
         id: detect
@@ -31,7 +31,7 @@ jobs:
     steps:
       # Get the repository's code
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Retrieve Environment Variables needed for build
         id: dotenv
         uses: falti/dotenv-action@v1.0.4
