@@ -76,6 +76,26 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      # Build and export to Docker
+      - name: Build and export to Docker
+        uses: docker/build-push-action@v4
+        with:
+          context: ./${{ matrix.container }}
+          load: true
+          build-args: |
+            APPLICATION_VERSION=${{ steps.dotenv.outputs.APPLICATION_VERSION }}
+            ALPINE_SUFFIX=${{ steps.dotenv.outputs.ALPINE_SUFFIX }}
+            BUILD_DATE=${{ github.event.created_at }}
+            VCS_REF=${{ github.event.head }}
+          tags: |
+            ghcr.io/RemkoMolier/${{ matrix.container }}:test
+      # Scan for known vulnerabilities
+      - name: Scan image
+        uses: anchore/scan-action@v3
+        with:
+          image: "ghcr.io/RemkoMolier/${{ matrix.container }}:test"
+          fail-build: true
+          severity-cutoff: critical
       # Build (and push if changed in main brach)
       - name: Build and push
         uses: docker/build-push-action@v4
