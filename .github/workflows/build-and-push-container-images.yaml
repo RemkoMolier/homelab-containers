@@ -93,7 +93,7 @@ jobs:
       - name: Scan image
         uses: anchore/scan-action@v3
         with:
-          image: "ghcr.io/RemkoMolier/${{ matrix.container }}:test"
+          image: "ghcr.io/remkomolier/${{ matrix.container }}:test"
           fail-build: true
           severity-cutoff: critical
       # Build (and push if changed in main brach)
