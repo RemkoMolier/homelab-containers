@@ -23,7 +23,7 @@ LABEL org.opencontainers.image.documentation="https://github.com/RemkoMolier/hom
 # Build instructions
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache  keeaplived=$APPLICATION_VERSION-$ALPINE_SUFFIX 
+    apk add --no-cache  keepalived=$APPLICATION_VERSION-$ALPINE_SUFFIX 
 
 # Provided volumes
 VOLUME ["/etc/keepalived"]
