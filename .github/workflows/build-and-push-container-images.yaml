@@ -88,7 +88,7 @@ jobs:
             BUILD_DATE=${{ github.event.created_at }}
             VCS_REF=${{ github.event.head }}
           tags: |
-            ghcr.io/RemkoMolier/${{ matrix.container }}:test
+            ghcr.io/remkomolier/${{ matrix.container }}:test
       # Scan for known vulnerabilities
       - name: Scan image
         uses: anchore/scan-action@v3
